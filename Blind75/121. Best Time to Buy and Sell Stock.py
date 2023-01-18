@@ -1,5 +1,5 @@
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
+    def maxProfit(self, prices: list[int]) -> int:
         profit = 0
         l = 0  #left point indicates index of buy value 
         
