@@ -45,7 +45,7 @@ Find it [here](https://leetcode.com/problems/longest-substring-without-repeating
 
 ### Efficient
 
-- $O(n)$ solution using a dictionary.
+- $O(n)$ solution using a dictionary and sliding window technique.
 
   ```py
   class Solution:
@@ -68,5 +68,3 @@ Find it [here](https://leetcode.com/problems/longest-substring-without-repeating
   answer = Solution()
   print(answer.lengthOfLongestSubstring("abcabcbb"))
   ```
-
-- is the above efficient solution a slinding window technique, if not try using that aswell. //TODO
