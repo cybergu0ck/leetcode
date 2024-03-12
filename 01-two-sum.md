@@ -1,8 +1,19 @@
+# Two Sum
+
+Easy level problem on leetcode.
+
+<br>
+<br>
+
 ## Description
 
 Two Sum problem from [leetcode](https://leetcode.com/problems/two-sum/description/).
 
 <br>
+<br>
+
+## Solution
+
 <br>
 
 ### Brute Force
