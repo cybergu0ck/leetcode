@@ -14,9 +14,7 @@ Find it [here](http://rb.gy/l4sr2z)
 
 ## Solution
 
-<br>
-
-## Efficient
+Use Recursive Backtracking Algorithm.
 
 ```py
 class Solution:
@@ -39,3 +37,22 @@ print(obj.permute([1,2,3]))
 
 #[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
+
+<br>
+<br>
+
+## Learning
+
+- Getting a list without a given index.
+
+  ```py
+  arr = arr[:i] + arr[i+1:]
+  ```
+
+<br>
+<br>
+
+## Resources
+
+<br>
+<br>
