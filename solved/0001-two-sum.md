@@ -1,13 +1,13 @@
 # Two Sum
 
-Easy level problem on leetcode.
+Easy level question on leetcode.
 
 <br>
 <br>
 
 ## Description
 
-Two Sum problem from [leetcode](https://leetcode.com/problems/two-sum/description/).
+Find it [here](https://leetcode.com/problems/two-sum/description/)
 
 <br>
 <br>
@@ -60,3 +60,11 @@ Two Sum problem from [leetcode](https://leetcode.com/problems/two-sum/descriptio
   print(answer.twoSum([2, 7, 11, 15], 9))
   # [0,1]
   ```
+
+<br>
+<br>
+
+## Resources
+
+<br>
+<br>
