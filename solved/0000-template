@@ -18,16 +18,25 @@ Find it [here](template).
 
 ### Brute Force
 
-- This is a template solution.
+- The following has $O()$ time complexity $O()$ space complexity.
 
   ```py
   ```
 
 <br>
 
-### Efficient Solution
+### Efficient Force
 
-- This is a template solution.
+- The following has $O()$ time complexity $O()$ space complexity.
+
+  ```py
+  ```
+
+<br>
+
+### Ideal Solution
+
+- The following has $O()$ time complexity $O()$ space complexity.
 
   ```py
   ```
