@@ -1,6 +1,6 @@
 # Two Sum
 
-Easy level problem on leetcode.
+Easy level question on leetcode.
 
 <br>
 <br>
