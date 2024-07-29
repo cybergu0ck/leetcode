@@ -21,6 +21,7 @@ Find it [here](https://leetcode.com/problems/3sum/).
 - The following has $O()$ time complexity $O()$ space complexity.
 
   ```py
+
   ```
 
 <br>
@@ -32,12 +33,12 @@ Find it [here](https://leetcode.com/problems/3sum/).
   ```py
   class Solution:
     def threeSum(self, num: List[int]) -> List[List[int]]:
-        num.sort() 
+        num.sort()
         res = []
         for i, a in enumerate(num):
             if (i >0 and a == num[i -1]):
                 continue
-            l = i +1 
+            l = i +1
             r = len(num)-1
             while (l < r):
                 sum = num[i] + num[l] + num[r]
@@ -52,6 +53,7 @@ Find it [here](https://leetcode.com/problems/3sum/).
                         l+=1
         return res
   ```
+
   - The sorting takes $O(n*log(n))$ and there is a nested iteration happening which is $O(n^2)$, Hence the overall time complexity would be $O(n*log(n) + n^2)$
 
 <br>
@@ -61,6 +63,7 @@ Find it [here](https://leetcode.com/problems/3sum/).
 - The following has $O()$ time complexity $O()$ space complexity.
 
   ```py
+
   ```
 
 <br>
@@ -69,6 +72,17 @@ Find it [here](https://leetcode.com/problems/3sum/).
 ## Notes
 
 - Easier to solve after solving 2 sum and 2 sum II.
+
+<br>
+<br>
+
+## Test Cases
+
+There are two edge cases which are good to know
+
+1. Say the input is [4,4,1,3,-4], after first iteration if the item is same as that of previous item (in this case 2nd item is same as 1st item i.e 4) then we can skip this one and move to the next one (in terms of left pointer).
+
+2. Say the input is [1,-1,-1,4,0], we get the one favouring outcome in the first iteration itself, now if we increment the left pointer we see that it is same as when it was before (It was -1 initially, after increment aslo it is -1). We need to skip these also.
 
 <br>
 <br>
