@@ -9,6 +9,9 @@ template level question on leetcode.
 
 Find it [here](template).
 
+- Some good follow ups are:
+  -
+
 <br>
 <br>
 
@@ -18,31 +21,31 @@ Find it [here](template).
 
 ### Brute Force
 
+```py
+
+```
+
 - The following has $O()$ time complexity $O()$ space complexity.
-
-  ```py
-
-  ```
 
 <br>
 
 ### Efficient Solution
 
+```py
+
+```
+
 - The following has $O()$ time complexity $O()$ space complexity.
-
-  ```py
-
-  ```
 
 <br>
 
 ### Ideal Solution
 
+```py
+
+```
+
 - The following has $O()$ time complexity $O()$ space complexity.
-
-  ```py
-
-  ```
 
 <br>
 <br>
