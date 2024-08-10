@@ -30,30 +30,73 @@ Find it [here](https://leetcode.com/problems/house-robber/description/).
 
 ### Efficient Solution
 
-Solving the question using Dynamic Programming as the question it poses is similar to "maximise the ...", which is type of optimization DP questions.
+- The question asks us to find the maximum amount, Hence this is an Optimisation question.
+- The problem has overlapping subproblems: If we rob the n'th house then we can add the n'th house amount to the amount obtained from robbing (n-2)th house. (This is not the recurrance relation, This is just hinting about the subproblem).
+- Therefore this is a Optimisation DP Problem. Using the DP frameork,
 
-- Using the DP frameork,
+  #### Objective Function
 
-  1. The Objective Function, $F(nums[])$ is the maximum amount robbed given the array nums.
-  2. The Base Case, $F(nums[]) = 0$ when size of array nums is 0. No amount can be robbed if there are no houses.
-  3. The Recurrance Relation, $F(nums[]) = max(nums[0] + F(nums[2::]), F(nums[1::]))$. There is two options, either we can choose to rob first house then we have to continue the robbing process from the third house onwards i.e. skipping second house or we can choose to skip the first house and continue the robbing process from second house. Ofcourse, the best option is the one where the robbing is maximised.
+  $F(i)$ is the maximum amount robbed given considering all the houses till index "$i$".
 
-#### Recursive Solution
+  #### Base Cases
+
+  1. $F(0) = nums[0]$. There's only 1 house to rob, we just rob it.
+  2. $F(1) = max(nums[0], nums[1])$. If there are 2 houses, it means we can rob either of one. We rob the wealhier one.
+
+  #### Recurrance Relation
+
+  $F(n) = max(nums[n] + F(n-2), F(n-1))$
+
+  - This is a recursive leap of faith, meaning we are assuming we know the answers to the previous problems.
+  - We can choose to rob the $n'th$ house, Then we have to add the $n'th$ house's wealth to whatever we get from robbing $(n-2)'th$ house. We can choose not to rob the $n'th$ house and consider the amount got from robbing $(n-1)'th$ house. We have to choose the maximum between these 2 options.
+
+  #### Where to find the Answer
+
+  The final value returned is the answer to the whole problem.
+
+<br>
+
+#### Recursive Solution (Top Down Approach)
 
 ```py
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        if len(nums) == 0:
-            return 0
-        return max(nums[0] + self.rob(nums[2::]), self.rob(nums[1::]))
+        def rec(index):
+            if index == 0:
+                return nums[0]
+            if index == 1:
+                return max(nums[0], nums[1])
+            return max(nums[index] + rec(index-2), rec(index-1))
+        return rec(len(nums)-1)
 ```
 
-- The following has $O(2^n)$ time complexity $O(n)$ space complexity. The space complexity is due to the call stack for recursion.
-- This recursive solution is a _"Top Down"_ Approach.
+- This is a linear $O(2^n)$ solution in terms of time and linear $O(n)$ solution in terms of space.
 
 <br>
 
-#### Dynamic Programming Solution
+#### Recursive Solution (Top Down Approach) with Memoization
+
+```py
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        memo = {}
+        def rec(index):
+            if index in memo:
+                return memo[index]
+            if index == 0:
+                return nums[0]
+            if index == 1:
+                return max(nums[0], nums[1])
+            memo[index] = max(nums[index] + rec(index-2), rec(index-1))
+            return memo[index]
+        return rec(len(nums)-1)
+```
+
+- This is a linear $O(n)$ solution in terms of time and linear $O(n)$ solution in terms of space.
+
+<br>
+
+#### Dynamic Programming Solution (Bottom Up Approach)
 
 ```py
 class Solution:
@@ -66,12 +109,35 @@ class Solution:
         dp[1] = max(nums[0], nums[1])
 
         for i in range(2,len(nums)):
-            dp[i] = max(dp[i-2]+nums[i], dp[i-1])
+            dp[i] = max(nums[i] + dp[i-2], dp[i-1])
 
         return dp[len(nums)-1]
 ```
 
-- The following has $O(n)$ time complexity $O(n)$ space complexity.
+- This is a linear $O(n)$ solution in terms of time and linear $O(n)$ solution in terms of space.
+
+<br>
+
+#### Dynamic Programming Solution (Bottom Up Approach) with Space Optimization
+
+```py
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+
+        prevToPrev = nums[0]
+        prev = max(nums[0], nums[1])
+
+        for house in range(2,len(nums)):
+            robbing = max(nums[house]+prevToPrev, prev)
+            prevToPrev = prev
+            prev = robbing
+
+        return prev
+```
+
+- This is a linear $O(n)$ solution in terms of time and linear $O(1)$ solution in terms of space.
 
 <br>
 
@@ -87,8 +153,8 @@ class Solution:
         return rob2
 ```
 
-- The following has $O(n)$ time complexity $O(1)$ space complexity.
-- This DP solution is a _"Bottom Up"_ Approach.
+- This is a "less code" version of the above problem, which is more intuitive in my opinion.
+- This is a linear $O(n)$ solution in terms of time and linear $O(1)$ solution in terms of space.
 
 <br>
 
@@ -125,3 +191,15 @@ class Solution:
 
 <br>
 <br>
+
+```
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        def rec(index):
+            if index == 0:
+                return nums[0]
+            if index == 1:
+                return max(nums[0], nums[1])
+            return max(nums[index] + rec(index-2), rec(index-1))
+        return rec(len(nums)-1)
+```
