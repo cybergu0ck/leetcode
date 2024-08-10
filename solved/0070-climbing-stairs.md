@@ -38,7 +38,7 @@ Solving the question using Dynamic Programming as the question it poses is simil
   2. The Base Case, $F(0) = 1$. There is only 1 way to climb no stairs i.e. to take no steps.
   3. The Recurrance Relation, $F(n) = F(n-1) + F(n-2)$. This is like taking a _"recursive leap of faith"_. Assuming one is $n'th$ step, he could have come from either 1 step or 2 step behind.
 
-#### Recursive Solution
+#### Recursive Solution (Top Down Approach)
 
 ```py
 class Solution:
@@ -55,7 +55,7 @@ class Solution:
 
 <br>
 
-#### Dynamic Programming Solution
+#### Dynamic Programming Solution (Bottom Up Approach)
 
 ```py
 class Solution:
