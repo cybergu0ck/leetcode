@@ -99,7 +99,8 @@ class Solution:
 ```py
 class Solution:
     def climbStairs(self, n: int) -> int:
-        prev, prevToPrev = 1,1
+        prevToPrev = 1
+        prev = 1
         for i in range(2,n+1):
             cur = prev + prevToPrev
             prevToPrev = prev
