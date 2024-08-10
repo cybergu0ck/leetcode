@@ -30,13 +30,30 @@ Find it [here](https://leetcode.com/problems/climbing-stairs/description/).
 
 ### Efficient Solution
 
-Solving the question using Dynamic Programming as the question it poses is similar to "how many distinct ways ...", which is type of combinatorial DP questions.
+- The question asks to find the number of ways, Hence this is a combinatorial problem.
+- The problem has overlapping subproblems: If we are on the n'th stair, then the number of ways to have climbed that stair is basically the number of ways to climb (n-1)'th stair and number of ways to climb (n-2)th stair. (This in itself is the recurrance relation.)
+- Therefore this is a Combinatorial DP Problem, Using the DP frameork,
 
-- Using the DP frameork,
+  #### Objective Function
 
-  1. The Objective Function, $F(i)$ is the number of ways to climb $i$ steps given one can take only 1 or 2 steps at once.
-  2. The Base Case, $F(0) = 1$. There is only 1 way to climb no stairs i.e. to take no steps.
-  3. The Recurrance Relation, $F(n) = F(n-1) + F(n-2)$. This is like taking a _"recursive leap of faith"_. Assuming one is $n'th$ step, he could have come from either 1 step or 2 step behind.
+  $F(i)$ is the number of ways to have climbed $i'th$ stair given one can take only 1 or 2 steps at once.
+
+  #### Base Cases
+
+  1. $F(0) = 1$. There is only 1 way to climb no stairs i.e. to take no steps.
+
+  #### Recurrance Relation
+
+  $F(n) = F(n-1) + F(n-2)$.
+
+  - This is a recursive leap of faith, meaning we are assuming we know the answers to the previous problems.
+  - Assuming one is $n'th$ step, he could have come from either 1 step or 2 step behind.
+
+  #### Where to find the Answer
+
+  The final value returned is the answer to the whole problem.
+
+<br>
 
 #### Recursive Solution (Top Down Approach)
 
@@ -51,7 +68,6 @@ class Solution:
 ```
 
 - This has exponential $O(2^n)$ time complexity $O(n)$ space complexity. The space complexity is due to the call stack for recursion.
-- This recursive solution is a _"Top Down"_ Approach.
 
 <br>
 
