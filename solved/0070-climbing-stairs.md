@@ -43,15 +43,35 @@ Solving the question using Dynamic Programming as the question it poses is simil
 ```py
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n < 0:
-            return 0
-        if n == 0:
-            return 1
-        return self.climbStairs(n-1) + self.climbStairs(n-2)
+        def rec(n):
+            if n == 0 or n == 1:
+                return 1
+            return rec(n-1) + rec(n-2)
+        return rec(n)
 ```
 
 - This has exponential $O(2^n)$ time complexity $O(n)$ space complexity. The space complexity is due to the call stack for recursion.
 - This recursive solution is a _"Top Down"_ Approach.
+
+<br>
+
+#### Recursive Solution (Top Down Approach) with Memoization
+
+```py
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        memo = {}
+        def rec(n):
+            if n in memo:
+                return memo[n]
+            if n == 0 or n == 1:
+                return 1
+            memo[n] = rec(n-1) + rec(n-2)
+            return memo[n]
+        return rec(n)
+```
+
+- This has exponential $O(n)$ time complexity $O(n)$ space complexity.
 
 <br>
 
@@ -60,7 +80,7 @@ class Solution:
 ```py
 class Solution:
     def climbStairs(self, n: int) -> int:
-        dp =[0 for stair in range(n+1)] #always of size n+1
+        dp =[0 for stair in range(n+1)] #We are also considering the zeroth stair
         dp[0] = 1 #Base Case
         dp[1] = 1 #Extra Base case needed for the following dp iteration
         for stair in range(2,n+1):
@@ -68,9 +88,26 @@ class Solution:
         return dp[n]
 ```
 
-- This linear $O(n)$ time complexity $O(n)$ space complexity.
+- This is linear $O(n)$ time complexity and linear $O(n)$ space complexity.
 - This is "_Bottom Up_" Approach using tabulation, true DP solution.
 - **Note that we need an extra base case here. If we use only one base case then it'll cause an issue in the first iteration as dp[stair-2] will be an out of index operation!**
+
+<br>
+
+#### Dynamic Programming Solution (Bottom Up Approach) with Space Optimization
+
+```py
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        prev, prevToPrev = 1,1
+        for i in range(2,n+1):
+            cur = prev + prevToPrev
+            prevToPrev = prev
+            prev = cur
+        return prev
+```
+
+- This is linear $O(n)$ time complexity and constant $O(1)$ space complexity.
 
 <br>
 
