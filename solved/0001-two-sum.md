@@ -38,6 +38,33 @@ Find it [here](https://leetcode.com/problems/two-sum/description/).
   # [0,1]
   ```
 
+  ```cpp
+  #include <vector>
+  #include <unordered_map>
+  #include <algorithm>
+
+  class Solution {
+  public:
+      vector<int> twoSum(vector<int>& nums, int target)
+      {
+          std:vector<int> res;
+          for(int i = 0; i < nums.size(); i++)
+          {
+              for(int j= i+1; j < nums.size(); j++)
+              {
+                  if(nums[i] + nums[j] == target)
+                  {
+                      res.push_back(i);
+                      res.push_back(j);
+                      break;
+                  }
+              }
+          }
+          return res;
+      }
+  };
+  ```
+
 <br>
 
 ### Efficient Solution
@@ -59,6 +86,36 @@ Find it [here](https://leetcode.com/problems/two-sum/description/).
   answer = Solution()
   print(answer.twoSum([2, 7, 11, 15], 9))
   # [0,1]
+  ```
+
+  ```cpp
+  #include <vector>
+  #include <unordered_map>
+  #include <algorithm>
+
+  class Solution {
+  public:
+      vector<int> twoSum(vector<int>& nums, int target)
+      {
+          std::unordered_map<int, int> track;
+          std:vector<int> res;
+          for(int index=0; index < nums.size(); index++)
+          {
+              int needed = target - nums[index];
+              if(track.find(needed) != track.end())
+              {
+                  res.push_back(index);
+                  res.push_back(track[needed]);
+                  break;
+              }
+              else
+              {
+                  track[nums[index]] = index;
+              }
+          }
+          return res;
+      }
+  };
   ```
 
 <br>
