@@ -18,28 +18,40 @@ Find it [here](https://leetcode.com/problems/longest-substring-without-repeating
 
 ### Brute Force
 
-- $O(n^2)$ solution.
+```py
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        res = 0
+        left = 0
+        for right in range(len(s)):
+            while(s[right] in s[left:right]):
+                left += 1
+            res = max(res, right - left +1)
+        return res
+```
 
-  ```py
-  class Solution:
-      def lengthOfLongestSubstring(self, s: str) -> int:
-          longest = 0
-          for i, v in enumerate(s):
-              longest = max(longest, 1)
-              new = v
-              for w in s[i + 1 :]:
-                  if w not in new:
-                      new += w
-                  else:
-                      longest = max(longest, len(new))
-                      break
-              longest = max(longest, len(new))
-          return longest
+```cpp
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int res{0};
+        int left{0};
+        for(int right = 0; right < s.length(); right++)
+        {
+            while(s.substr(left, right-left).find(s[right]) != std::string::npos)
+            {
+                left+=1;
+            }
+            res = std::max(res, right-left+1);
+        }
+        return res;
+    }
+};
+```
 
-
-  answer = Solution()
-  print(answer.lengthOfLongestSubstring("abcabcbb"))
-  ```
+- The approach here is to use "Sliding Window" technique.
+- This has quadratic $O(n^2)$ time complexity $O(1)$ space complexity.
+  - The time complexity is quadratic because of the `substr` and `find` method's that take $O(n)$ along with the outer loop. I believe the inner loop doesn't add to the time complexity as the characters are processed only once because the left pointer moves only forward.
 
 <br>
 
@@ -91,6 +103,7 @@ public:
 
 - This has linear $O(n)$ time complexity $O(n)$ space complexity.
   - This is not $O(n^2)$ time complexity because each character is added and removed only once as the left pointer moves only forward and not backward.
+  - The `find` method of the set has $O(log(n))$ time complexity. However, this doesn't account in our analysis as 'n' would be the size of the set and not the size of the input string.s
 
 <br>
 <br>
