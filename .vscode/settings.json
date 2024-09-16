@@ -1,0 +1,8 @@
+{
+  "workbench.colorCustomizations": {
+    // "editorGroupHeader.tabsBackground": "#ff0000",
+    "tab.activeBackground": "#75717188"
+  },
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.tabSizing": "fit"
+}

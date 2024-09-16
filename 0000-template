@@ -9,6 +9,8 @@ template level question on leetcode.
 
 Find it [here](template).
 
+- Some good follow ups are:
+
 <br>
 <br>
 
@@ -18,31 +20,31 @@ Find it [here](template).
 
 ### Brute Force
 
-- The following has $O()$ time complexity $O()$ space complexity.
+```py
 
-  ```py
+```
 
-  ```
+- This is a $O()$ solution in terms of time and $O()$ solution in terms of space.
 
 <br>
 
 ### Efficient Solution
 
-- The following has $O()$ time complexity $O()$ space complexity.
+```py
 
-  ```py
+```
 
-  ```
+- This is a $O()$ solution in terms of time and $O()$ solution in terms of space.
 
 <br>
 
 ### Ideal Solution
 
-- The following has $O()$ time complexity $O()$ space complexity.
+```py
 
-  ```py
+```
 
-  ```
+- This is a $O()$ solution in terms of time and $O()$ solution in terms of space.
 
 <br>
 <br>
