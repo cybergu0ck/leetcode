@@ -14,47 +14,47 @@ Find it [here](template).
 <br>
 <br>
 
+## Test Cases
+
+<br>
+<br>
+
 ## Solution
 
 <br>
 
 ### Brute Force
 
+```cpp
+
+```
+
 ```py
 
 ```
 
-- This is a $O()$ solution in terms of time and $O()$ solution in terms of space.
+- This is a $O()$ solution in terms of time, where $ $ is .
+- This is a $O()$ solution in terms of space, where $ $ is .
 
 <br>
 
 ### Efficient Solution
 
-```py
+```cpp
 
 ```
-
-- This is a $O()$ solution in terms of time and $O()$ solution in terms of space.
-
-<br>
-
-### Ideal Solution
 
 ```py
 
 ```
 
-- This is a $O()$ solution in terms of time and $O()$ solution in terms of space.
+- This is a $O()$ solution in terms of time, where $ $ is .
+- This is a $O()$ solution in terms of space, where $ $ is .
 
 <br>
 <br>
 
 ## Notes
-
-<br>
-<br>
-
-## Test Cases
 
 <br>
 <br>
