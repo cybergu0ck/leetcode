@@ -7,7 +7,23 @@ Easy level question on leetcode.
 
 ## Description
 
-Find it [here](https://shorturl.at/Ugo4p).
+Find it [here](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/).
+
+- Some good follow ups are:
+  - Can the input array be empty?
+
+<br>
+<br>
+
+## Test Cases
+
+| Input     | Output | Note                  |
+| --------- | ------ | --------------------- |
+| [1,2,3,4] | 3      | Increasing trend      |
+| [4,3,2,1] | 0      | Decreasing trend      |
+| [1,1,1,1] | 0      | Constant trend        |
+| [1,4,3,1] | 3      | Increase and Decrease |
+| [1,3,1,7] | 6      | Increae and Increase  |
 
 <br>
 <br>
@@ -16,33 +32,45 @@ Find it [here](https://shorturl.at/Ugo4p).
 
 <br>
 
-### Brute Force
+### Linear Solution
 
-- The following has $O(n^2)$ time complexity $O(1)$ space complexity, by iterating over every possible result using nested for loop.
-
-  ```py
-  ```
-
-<br>
-
-### Efficient Force
-
-- The following has $O(n)$ time complexity $O(1)$ space complexity.
-
-  ```py
-  class Solution:
+```py
+class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        max_profit = 0
-        low = prices[0]
-        for i in range(1, len(prices)):
-            if prices[i] >= low:
-                cur_profit = prices[i] - low
-                if cur_profit > max_profit:
-                    max_profit = cur_profit
+        res = 0
+        buy = prices[0]
+        for price in prices:
+            if price > buy:
+                profit = price - buy
+                res = max(profit, res)
             else:
-                low = prices[i]
-        return max_profit
-  ```
+                buy = price
+        return res
+```
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int res{0};
+        int buy = prices[0];
+        for(const auto& price : prices){
+            if(price > buy){
+                int profit = price - buy;
+                res = std::max(res, profit);
+            }
+            else{
+                buy = price;
+            }
+        }
+        return res;
+    }
+};
+```
+
+- Iterate through prices, calculate and update the result if current price is greater than buy price otherwise update the buy price.
+- This is a linear $O(n)$ solution in terms of time, where $n$ is the number of elements in the input array.
+- This is a constant $O(1)$ solution in terms of space.
 
 <br>
 
@@ -51,21 +79,30 @@ Find it [here](https://shorturl.at/Ugo4p).
 - The following has $O()$ time complexity $O()$ space complexity.
 
   ```py
+
   ```
 
 <br>
 <br>
 
-## Testcases
-
-- Early profit, something like [10,20,1,5]
-- Late profit, something like [10,20,1,5,100]
-- No profit, something like [10,9,8,7]
-
-<br>
-<br>
-
 ## Notes
+
+- The algorithm can be written as follows by tweaking the if and else condition little bit, I am not sure if it is better code.
+
+  ```py
+  class Solution:
+      def maxProfit(self, prices: List[int]) -> int:
+          res = 0
+          buy = prices[0]
+          for price in prices:
+              if price < buy:
+                  buy = price
+              profit = price - buy
+              res = max(profit, res)
+          return res
+  ```
+
+- Python's `max()` equvivalent in C++ is `std::max()` from `algorithm` header.
 
 <br>
 <br>
