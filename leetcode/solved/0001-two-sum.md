@@ -1,127 +1,160 @@
 # Two Sum
 
-Easy level question on leetcode.
+Easy level [question on leetcode](https://leetcode.com/problems/two-sum/description/).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](https://leetcode.com/problems/two-sum/description/).
-
+<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
+<br>
 
 ### Brute Force
 
-- This is a $O(n^2)$ solution.
+```py
+from typing import List
 
-  ```py
-  from typing import List
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i, v in enumerate(nums):
+            for j, w in enumerate(nums):
+                if i != j:
+                    if v + w == target:
+                        return [i, j]
 
-  class Solution:
-      def twoSum(self, nums: List[int], target: int) -> List[int]:
-          for i, v in enumerate(nums):
-              for j, w in enumerate(nums):
-                  if i != j:
-                      if v + w == target:
-                          return [i, j]
+```
 
+```cpp
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
 
-  answer = Solution()
-  print(answer.twoSum([2, 7, 11, 15], 9))
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target)
+    {
+        std:vector<int> res;
+        for(int i = 0; i < nums.size(); i++)
+        {
+            for(int j= i+1; j < nums.size(); j++)
+            {
+                if(nums[i] + nums[j] == target)
+                {
+                    res.push_back(i);
+                    res.push_back(j);
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+};
+```
 
-  # [0,1]
-  ```
+<br>
 
-  ```cpp
-  #include <vector>
-  #include <unordered_map>
-  #include <algorithm>
+#### Explanation
 
-  class Solution {
-  public:
-      vector<int> twoSum(vector<int>& nums, int target)
-      {
-          std:vector<int> res;
-          for(int i = 0; i < nums.size(); i++)
-          {
-              for(int j= i+1; j < nums.size(); j++)
-              {
-                  if(nums[i] + nums[j] == target)
-                  {
-                      res.push_back(i);
-                      res.push_back(j);
-                      break;
-                  }
-              }
-          }
-          return res;
-      }
-  };
-  ```
+Determine the indices by iterating over every possible combination.
 
+<!-- detailed explanation with steps if appropriate -->
+
+<br>
+
+#### Complexity Analysis
+
+- **Time Complexity**: This is a quadratic $O(n^2)$ solution in terms of time, where $n$ is the size of the input array.
+- **Space Complexity**: This is a constant $O(1)$ solution in terms of space.
+
+<br>
 <br>
 
 ### Efficient Solution
 
-- This is a $O(n)$ solution, considering that the average-case time complexity to check if a key is present in a dictionary is $O(1)$.
+```py
+from typing import List
 
-  ```py
-  from typing import List
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        map = {}
+        for index, value in enumerate(nums):
+            needed = target - value
+            if needed in map:
+                return [index, map[needed]]
+            map[value] = index
+```
 
-  class Solution:
-      def twoSum(self, nums: List[int], target: int) -> List[int]:
-          map = {}
-          for index, value in enumerate(nums):
-              needed = target - value
-              if needed in map:
-                  return [index, map[needed]]
-              map[value] = index
+```cpp
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
 
-  answer = Solution()
-  print(answer.twoSum([2, 7, 11, 15], 9))
-  # [0,1]
-  ```
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target)
+    {
+        std::unordered_map<int, int> track;
+        std:vector<int> res;
+        for(int index=0; index < nums.size(); index++)
+        {
+            int needed = target - nums[index];
+            if(track.find(needed) != track.end())
+            {
+                res.push_back(index);
+                res.push_back(track[needed]);
+                break;
+            }
+            else
+            {
+                track[nums[index]] = index;
+            }
+        }
+        return res;
+    }
+};
+```
 
-  ```cpp
-  #include <vector>
-  #include <unordered_map>
-  #include <algorithm>
+<br>
 
-  class Solution {
-  public:
-      vector<int> twoSum(vector<int>& nums, int target)
-      {
-          std::unordered_map<int, int> track;
-          std:vector<int> res;
-          for(int index=0; index < nums.size(); index++)
-          {
-              int needed = target - nums[index];
-              if(track.find(needed) != track.end())
-              {
-                  res.push_back(index);
-                  res.push_back(track[needed]);
-                  break;
-              }
-              else
-              {
-                  track[nums[index]] = index;
-              }
-          }
-          return res;
-      }
-  };
-  ```
+#### Explanation
 
+Iterate over the array and utilize a dictionary which stores the complement of each element needed to reach the target sum.
+
+<!-- detailed explanation with steps if appropriate -->
+
+<br>
+
+#### Complexity Analysis
+
+- **Time Complexity**: This is a linear $O(n)$ solution in terms of time, where $n$ is the size of the input array.
+- **Space Complexity**: This is a linear $O(n)$ solution in terms of space, where $n$ is the size of the input array.
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+<br>
+<br>
+<br>
+
+## Notes
+
+<br>
 <br>
 <br>
 
 ## Resources
 
+<br>
 <br>
 <br>
