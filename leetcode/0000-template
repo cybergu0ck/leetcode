@@ -1,26 +1,33 @@
 # Template
 
-template level question on leetcode.
+template [level question on leetcode](url).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](template).
+<!-- - Question
+        - Ans       -->
 
-- Some good follow ups are:
-
+<br>
 <br>
 <br>
 
 ## Test Cases
 
+| Case | Input | Output |
+| ---- | ----- | ------ |
+|      |       |        |
+
+<br>
 <br>
 <br>
 
 ## Solution
 
+<br>
 <br>
 
 ### Brute Force
@@ -33,9 +40,21 @@ Find it [here](template).
 
 ```
 
-- This is a $O()$ solution in terms of time, where $ $ is .
-- This is a $O()$ solution in terms of space, where $ $ is .
+<br>
 
+#### Explanation
+
+<!-- one line desctiption of the logic of the algorithm -->
+<!-- detailed explanation with steps if appropriate -->
+
+<br>
+
+#### Complexity Analysis
+
+- **Time Complexity**: This is a $O()$ solution in terms of time, where $ $ is .
+- **Space Complexity**: This is a $O()$ solution in terms of space, where $ $ is .
+
+<br>
 <br>
 
 ### Efficient Solution
@@ -48,9 +67,27 @@ Find it [here](template).
 
 ```
 
-- This is a $O()$ solution in terms of time, where $ $ is .
-- This is a $O()$ solution in terms of space, where $ $ is .
+<br>
 
+#### Explanation
+
+<!-- one line desctiption of the logic of the algorithm -->
+<!-- detailed explanation with steps if appropriate -->
+
+<br>
+
+#### Complexity Analysis
+
+- **Time Complexity**: This is a $O()$ solution in terms of time, where $ $ is .
+- **Space Complexity**: This is a $O()$ solution in terms of space, where $ $ is .
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+<br>
 <br>
 <br>
 
@@ -58,8 +95,10 @@ Find it [here](template).
 
 <br>
 <br>
+<br>
 
 ## Resources
 
+<br>
 <br>
 <br>
