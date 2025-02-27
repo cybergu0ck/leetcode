@@ -51,8 +51,8 @@ template [level question on leetcode](url).
 
 #### Complexity Analysis
 
-- **Time Complexity**: This is a <!-- time complexity in english --> $O()$ solution in terms of time, where $ $ is .
-- **Space Complexity**: This is a <!-- time complexity in english --> $O()$ solution in terms of space, where $ $ is .
+- **Time Complexity**: This is a <!-- time complexity in english -->, $O()$ solution in terms of time, where $ $ is <!-- placeholder -->.
+- **Space Complexity**: This is a <!-- time complexity in english -->, $O()$ solution in terms of space, where $ $ is <!-- placeholder -->.
 
 <br>
 <br>
@@ -78,8 +78,8 @@ template [level question on leetcode](url).
 
 #### Complexity Analysis
 
-- **Time Complexity**: This is a $O()$ solution in terms of time, where $ $ is .
-- **Space Complexity**: This is a $O()$ solution in terms of space, where $ $ is .
+- **Time Complexity**: This is a <!-- time complexity in english -->, $O()$ solution in terms of time, where $ $ is <!-- placeholder -->.
+- **Space Complexity**: This is a <!-- time complexity in english -->, $O()$ solution in terms of space, where $ $ is <!-- placeholder -->.
 
 <br>
 <br>
