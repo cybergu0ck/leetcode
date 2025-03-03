@@ -134,6 +134,10 @@ public:
 
 #### Explanation
 
+Begin with all variations for first two numbers for the fib subsequence and then check if the subsequent number is present in the set.
+
+<br>
+
 A minimum of two numbers are required for the Fibonacci subsequence. Try every possible array variation for the first two values of the fibonacci subsequence. Instead of iterating over the remaining values in the input array, check if the next fibonaccci value is present in the set created using the input array and then determine the longest subsequence.
 
 - Store the length of the input array in a variable as it is used in range functions in two loops.
@@ -143,8 +147,15 @@ A minimum of two numbers are required for the Fibonacci subsequence. Try every p
 
 #### Complexity Analysis
 
-- **Time Complexity**: This is a cubic, $O(n^3)$ solution in terms of time, where $n$ is size of the input array. This is the worst case where the inner most while loop will run 'n' times for the case where all the remaining elements are candidates for the fibonacci subsequence. However, average time complexity will be less than this.
+- **Time Complexity**: This is a cubic, $O(n^2*log(m))$ solution in terms of time, where $n$ is size of the input array and $m$ is the largest number in the array .
+
+  - Fibonacci numbers grow exponentially, a sequence that stays within a maximum value of $10^9$ can have at most 43 terms. This is because the Fibonacci sequence increases so rapidly that it reaches $10^9$ in at most 43 steps. As a result, the inner loop can run at most 43 times, meaning it runs in $O(log(m))$ time, where m is the largest number in array.
+
+  - Note: Some might consider the complexity to be $O(n^3)$, but that assumption holds only if we consider the worst case where the sequence length is $O(n)$. However, since Fibonacci numbers grow exponentially, the maximum sequence length is actually bounded by $O(log(m))$ rather than $O(n)$.
+
 - **Space Complexity**: This is a linear, $O(n)$ solution in terms of space, where $n$ is the size of the set formed from the input array.
+
+<!-- TODO - Understand the DP solution that has O(n2) -->
 
 <br>
 <br>
