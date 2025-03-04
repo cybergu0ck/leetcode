@@ -128,7 +128,7 @@ public:
 
 #### Explanation
 
-Count character frequencies in a map for the first string, decrement the values of the same map for the second; anagrams have all zero counts.
+Count character frequencies in a map for the first string, decrement the values of the same map for the second string; anagrams have all zero counts.
 
 - Utilize a map with keys as characters and values as frequencies, iterate over the characters of first string and increment the values in the map. Iterate over the characters of the second string and decrement the values. Finally, iterate over the map, it should have all the values as zeros if the strings are anagram.
 
