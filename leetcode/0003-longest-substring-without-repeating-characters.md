@@ -1,22 +1,48 @@
-# Longest Substring Without Repeating Characters
+# 3. Longest Substring Without Repeating Characters
 
-medium level problem on leetcode.
+Medium [level question on leetcode](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+- Clarify the definition of a substring.
 
+  - A substring is a contigious non-empty sequence of characters within the string.
+
+- Can the input string be empty? If yes what is the expected result?
+
+  - It can be empty string and the result should be 0.
+
+- What kind of characters are present in the input string?
+
+  - The string consists of English letters, digits, symbols and spaces.
+
+<br>
+<br>
+<br>
+
+## Test cases
+
+| Case                                                              | Input  | Output |
+| ----------------------------------------------------------------- | ------ | ------ |
+| Empty string                                                      | ""     | 0      |
+| All unique characters                                             | "abc"  | 3      |
+| Repeated character is present at the begining (a is first in abc) | "abca" | 1      |
+| Repeated character is present in between (b is in between abc)    | "abcb" | 3      |
+
+<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
+<br>
 
-### Brute Force
+### Brute force
 
 ```py
 class Solution:
@@ -49,13 +75,26 @@ public:
 };
 ```
 
-- The approach here is to use "Sliding Window" technique.
-- This has quadratic $O(n^2)$ time complexity $O(1)$ space complexity.
-  - The time complexity is quadratic because of the `substr` and `find` method's that take $O(n)$ along with the outer loop. I believe the inner loop doesn't add to the time complexity as the characters are processed only once because the left pointer moves only forward.
+<br>
+
+#### Explanation
+
+Use sliding window technique without storing characters in a data structure.
+
+- Initialise a left pointer to point to the start index of the substring.
+- In a nested loop, increment the left pointer until the substring is unique and update the result.
 
 <br>
 
-### Efficient
+#### Complexity analysis
+
+- Time Complexity : This is a quadratic, $O(n^2)$ solution in terms of time, where $n$ is the size of the input string.
+- Space Complexity : This is a constant, $O(1)$ solution in terms of space.
+
+<br>
+<br>
+
+### Linear solution
 
 ```py
 class Solution:
@@ -82,7 +121,7 @@ public:
     int lengthOfLongestSubstring(string s) {
        int res{0};
        int left{0};
-       std::set<char> unique_characters;  //Compare time complexity with unordered set
+       std::unordered_set<char> unique_characters;
 
        for(int right=0; right<s.length();++right)
        {
@@ -99,14 +138,30 @@ public:
 };
 ```
 
-- The approach here is to use "Sliding Window" with "set" data structure.
+<br>
 
-- This has linear $O(n)$ time complexity $O(n)$ space complexity.
-  - This is not $O(n^2)$ time complexity because each character is added and removed only once as the left pointer moves only forward and not backward.
-  - The `find` method of the set has $O(log(n))$ time complexity. However, this doesn't account in our analysis as 'n' would be the size of the set and not the size of the input string.s
+#### Explanation
+
+Use sliding window technique and store the characters in a set.
+
+- Initialise a left pointer to point to the start index of the substring.
+- While iterating over the string if the character is not present in the set, add it to the set.
+- While iterating over the string if the character is present in the set, keep removing the character pointed by the left pointer and increment the left pointer.
+
+<br>
+
+#### Complexity analysis
+
+- Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is size of the input string.
+
+  - This is not $O(n^2)$ time complexity because each character is added and removed only once in the set, as the left pointer moves only forward and not backward.
+
+- Space Complexity : This is a linear, $O(m)$ solution in terms of space, where $m$ is number of unique characters in the input string.
 
 <br>
 <br>
+
+### Linear solution with space
 
 ```py
 class Solution:
@@ -118,8 +173,8 @@ class Solution:
         for right in range(len(s)):
             if(char_indices[ord(s[right])] >= left):
                 left = char_indices[ord(s[right])] + 1 #+1 because we don't want to include the repeat character
-            res = max(res, right - left + 1)
             char_indices[ord(s[right])] = right
+            res = max(res, right - left + 1)
 
         return res
 ```
@@ -146,25 +201,53 @@ public:
 };
 ```
 
-- The approach here is to use "Sliding Window" with "vector" data structure and is more efficient than the set and map counterparts.
-  - Accessing a set by index is $O(n)$ while that for a vector is $O(1)$.
-- This has linear $O(n)$ time complexity $O(n)$ space complexity.
+<br>
 
+#### Explanation
+
+Use sliding window technique and use a vector to store the index of the characters.
+
+- Initialise a left pointer to point to the start index of the substring and a vector of 128 (since we have 128 ascii characters) values allinitialised to -1.
+- Iterate over the string, use the ascii of the character as the index in the vector.
+  - If the value at the index is greater than the left pointer, it means that the character is repeated in between the string (ex: abcb, b is in abc)hence update the left pointer using the value in the vector!
+    -Update the vector to store the last index of the characters.
+
+<br>
+
+#### Complexity analysis
+
+- Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is size of the input string.
+
+  - This is not $O(n^2)$ time complexity because each character is added and removed only once in the set, as the left pointer moves only forward and not backward.
+
+- Space Complexity : This is a constant, $O(1)$ solution in terms of space.
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+<br>
 <br>
 <br>
 
 ## Notes
 
-- In average case, unorderd_set is better than set in terms of time complexity (not in worst case where there is a hash collision).
-- For accessing by index, vectors are always better than maps and sets.
-- In Python, `ord` function is used to get the ascii value for a character and `chr` function is used to get the character for a given ascii value.
+Python :
+
+- Using a vector of fixed size will save space instead of using map, this is ideal when the elements are known prior.
+
+- `ord` function is used to get the ascii value for a character and `chr` function is used to get the character for a given ascii value.
 
   ```py
   print(ord('c'))  #character to ascii value
   print(chr(99))   #asci to character value
   ```
 
-- In C++,
+C++ :
+
+- The ascii value and corresponding character is obtained by casting.
 
   ```cpp
   #include <iostream>
@@ -181,8 +264,10 @@ public:
 
 <br>
 <br>
+<br>
 
 ## Resources
 
+<br>
 <br>
 <br>
