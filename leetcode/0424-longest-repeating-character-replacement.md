@@ -1,24 +1,50 @@
 # 424. Longest Repeating Character Replacement
 
-Medium level question on leetcode.
+Medium [level question on leetcode](https://leetcode.com/problems/longest-repeating-character-replacement/description/).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](https://leetcode.com/problems/longest-repeating-character-replacement/description/).
+- Clarify the definition of a substring.
 
-- Some good follow ups are:
+  - A substring is a contigious non-empty sequence of characters within the string.
 
+- Can the input string be empty? If yes what is the expected result?
+
+  - No
+
+- What kind of characters are present in the input string?
+
+  - The string consists of only uppercase english characters.
+
+<br>
+<br>
+<br>
+
+## Test cases
+
+| Case | Input            | Output |
+| ---- | ---------------- | ------ |
+|      | "AABB" and k=2   | 4      |
+|      | "AABB" and k=1   | 3      |
+|      | "AABB" and k=0   | 2      |
+|      | "AABABB" and k=1 | 4      |
+
+- Not fully sure if these cover all the cases.
+
+<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
+<br>
 
-### Brute Force
+### Brute force
 
 ```py
 from collections import defaultdict
@@ -37,63 +63,98 @@ class Solution:
         return res
 ```
 
-- The following has $O(n^3)$ time complexity $O(n)$ space complexity.
+```cpp
+
+```
 
 <br>
 
-### Efficient Solution
+#### Explanation
+
+<!-- one line desctiption of the logic of the algorithm -->
+<!-- detailed explanation with steps if appropriate -->
+
+<br>
+
+#### Complexity analysis
+
+- Time Complexity : This is a cubic, $O(n^3)$ solution in terms of time, where $n$ is size of the input string.
+- Space Complexity : This is a linear, $O(m)$ solution in terms of space, where $m$ is number of unique characters in the input string.
+
+<br>
+<br>
+
+### Linear solution
 
 ```py
 from collections import defaultdict
+
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        res = 0
-        freq = defaultdict(int)
-        left = 0
-        for right in range(len(s)):
-            freq[s[right]] += 1
-            cur_len = right - left + 1
-            max_repeat = max(freq.values())
-            if cur_len - max_repeat <= k:
-                res = max(res, cur_len)
+        longest = 0
+        char_to_freq = defaultdict(int)
+        l = 0
+        r = 0
+
+        while(r != len(s)): # or use : for right in range(len(s)):
+            char_to_freq[s[r]] += 1
+            cur_len = r - l + 1
+            replacable_len = cur_len - max(char_to_freq.values())
+            if(replacable_len <= k):
+                longest = max(longest, cur_len)
             else:
-                freq[s[left]] -= 1
-                left += 1
-        return res
+                l += 1
+                char_to_freq[s[l]] -= 1
+            r += 1
+        return longest
 ```
 
-- Solving the question using "Sliding Window Technique"
+```cpp
 
-  1. Initialise left and right pointers, Here the right pointer is managed by the for loop and we manage only the left pointer.
-  2. We add the character to the map in every iteration.
-  3. The core logic is in the check, we get the character with maximum frequency in the current window. If (cur_len - max_repeat) <= 2, Then we can consider this as a favourable solution. Otherwise we have reached the bounds with the current window and need to slide the window forward by incrementing the left pointer and decrementing the correct key in the map.
+```
 
-- The following has $O(n)$ time complexity $O(n)$ space complexity.
+<!-- TODO - write the C++ version of this -->
 
 <br>
 
-### Ideal Solution
+#### Explanation
 
-```py
+Use sliding window technique and a map with keys as character and the values as it's frequency.
 
-```
+1. Initialise the left and right pointers to point to the first character.
+1. Iterate the right pointer until it reaches the right end.
+1. Add the character pointed by right pointer to the map. key as the character and value is its frequency.
+1. Calculate the replacable length, i.e. equal to current length - character that has highest frequency.
+1. If the replacable length is less than or equal to "k", update result if needed.
+1. If the replacable length is greater than "k", increment the left pointer and update the map accordingly.
 
-- The following has $O()$ time complexity $O()$ space complexity.
+<br>
 
+#### Complexity analysis
+
+- Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is size of the input string.
+- Space Complexity : This is a linear, $O(m)$ solution in terms of space, where $m$ is number of unique characters in the input string.
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+<br>
 <br>
 <br>
 
 ## Notes
 
-<br>
-<br>
+- Solve [leetcode 3, longest substring without repeating characters](./0003-longest-substring-without-repeating-characters.md) first.
 
-## Test Cases
-
+<br>
 <br>
 <br>
 
 ## Resources
 
+<br>
 <br>
 <br>
