@@ -106,6 +106,12 @@ The question is set up such that we can use the concept of binary search without
 
 <br>
 
+The image below is the crux of the logic
+
+![img](./_assets/images/leetcode-162.jpg)
+
+<br>
+
 #### Complexity analysis
 
 - Time Complexity : This is a logarithmic, $O(log(n))$ solution in terms of time, where $n$ is size of the input array.
