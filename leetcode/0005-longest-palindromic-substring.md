@@ -20,6 +20,14 @@ Medium [level question on leetcode](https://leetcode.com/problems/longest-palind
 
   - Return any of the longest palindromic substring.
 
+- Can the string be empty? If yes, what must be the expected output?
+
+  - No, input strings are not empty.
+
+- What are the characters of the input string like?
+
+  - Consists of lowercase English letters.
+
 <br>
 <br>
 <br>
@@ -73,7 +81,7 @@ class Solution:
 Check if every possible substring is a palindrome.
 
 - Every possible substring is got using two nested loops.
-- One a substring is got, check if it is a palindrome.
+- One a substring is got, check if it is a palindrome and update the longest palindromic substring.
 
 <br>
 
@@ -132,6 +140,10 @@ For every character in the string, create left and right pointers and expand it 
 - For every character, initialise the left and right pointers.
 - Until the pointers are valid and the characters pointed to by the pointers are same. Update the longest palindromic substring and expand the pointers outwards.
 - We need to do the same thing twice with different initialisations of left and right pointers for the odd and even palindromic substrings.
+
+<br>
+
+- The core logic used here is exactly same as that of [leetcode 647, Palindromic Subtrings](./0647-palindromic-substrings.md), The only change is that instead of keeping track of the count, we keep track of the longest palindromic substring.
 
 <br>
 
