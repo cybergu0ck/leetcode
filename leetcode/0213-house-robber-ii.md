@@ -1,34 +1,43 @@
 # 213. House Robber II
 
-Medium level question on leetcode.
+Medium [level question on leetcode](https://leetcode.com/problems/house-robber-ii/description/).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](https://leetcode.com/problems/house-robber-ii/description/).
+The following contraints should answer for clarifications
 
-- Some good clarification questions are:
+- `1 <= nums.length <= 100`
+- `0 <= nums[i] <= 1000`
 
+<br>
+<br>
+<br>
+
+## Test cases
+
+| Case | Input     | Output |
+| ---- | --------- | ------ |
+|      | [1]       | 1      |
+|      | [1,2]     | 2      |
+|      | [2,3,2]   | 3      |
+|      | [1,2,3,1] | 4      |
+
+- The above test cases looks complete for the given question.
+
+<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
-
-### Brute Force
-
-```py
-
-```
-
-- The following has $O()$ time complexity $O()$ space complexity.
-
 <br>
 
-### Efficient Solution
+### Bottom up dp solution
 
 ```py
 class Solution:
@@ -44,35 +53,45 @@ class Solution:
         return max(nums[0],self.rob1(nums[:-1]),self.rob1(nums[1:]))
 ```
 
-- _"If we cut a circle and straighten it, we get a line"_. Applying the algorithm used for OG house robber cleverly.
-- The following has $O(n)$ time complexity $O(1)$ space complexity.
-
-<br>
-
-### Ideal Solution
-
-```py
+```cpp
 
 ```
 
-- The following has $O()$ time complexity $O()$ space complexity.
+<br>
 
+#### Explanation
+
+Run the house robber algorithm twice, once excluding the first house and then the last house and return the maximum.
+
+<br>
+
+#### Complexity analysis
+
+- Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is number of houses or the size of the input array.
+- Space Complexity : This is a constant, $O(1)$ solution in terms of space.
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+<br>
 <br>
 <br>
 
 ## Notes
 
-<br>
-<br>
+- Checkout [leetcode 198, house robber](./0198-house-robber.md)
 
-## Test Cases
-
+<br>
 <br>
 <br>
 
 ## Resources
 
-- credit to neetcode.
+- Got this clever approach from neetcode.
 
+<br>
 <br>
 <br>
