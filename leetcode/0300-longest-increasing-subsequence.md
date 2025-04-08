@@ -1,130 +1,181 @@
 # 300. Longest Increasing Subsequence
 
-Medium level question on leetcode.
+Medium [level question on leetcode](https://leetcode.com/problems/longest-increasing-subsequence/description/).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](https://leetcode.com/problems/longest-increasing-subsequence/description/).
+- Confirm the definition of subsequence.
 
-- Some good follow ups are:
+  - A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
 
-  1. Are we supposed to consider strictly increasing subsequence or a non-decreasing subsequence?
+* Can the input array be empty?
 
-- Checkout the notes section first!
+  - `1 <= nums.length <= 2500`
 
+* The question seeks the longest strictly increasing subsequence.
+
+<br>
+<br>
+<br>
+
+## Test cases
+
+| Case                   | Input       | Output |
+| ---------------------- | ----------- | ------ |
+| Single element         | [1]         | 1      |
+| Continously increasing | [1,2,3]     | 3      |
+| Continously decreasing | [3,2,1]     | 0      |
+| Increase and decrease  | [1,2,3,1]   | 3      |
+| Decrease and increase  | [3,2,1,2,3] | 3      |
+| Increase and increase  | [1,2,1,2,3] | 3      |
+
+- The above test cases look complete.
+
+<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
+<br>
 
-### Brute Force
+### Recursive solution
 
 ```py
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        def rec(i):
+            "longest increasing subsequence considering it includes and ends with nums[i]"
+            if(i == 0):
+                return 1
+
+            longest = 1
+            for j in range(i):
+                if(nums[i] > nums[j]):
+                    longest = max(longest, 1 + rec(j))
+
+            return longest
+
+        #The longest increasing subsequence might be ending with any of the index not necessarily the last one
+        res = 0
+        for i in range(len(nums)):
+            res = max(res, rec(i))
+
+        return res
+```
+
+```cpp
 
 ```
 
-- The following has $O()$ time complexity $O()$ space complexity.
-
 <br>
 
-### Efficient Solution
+#### Explanation
 
-- The question asks us to find the longest, Hence this is an optimisation question.
-- The problem has overlapping subproblems: Any subsequence of a longest increasing sequence must also be increasing sequence.
-- Therefore this is a Optimisation DP Problem. Using the DP frameork,
+Use the dp framework as the question can be solved using dynamic programming:
 
-  #### Objective Function
+- The problem is about finding longest increasing subsequence, an optimisation problem. Potentially a DP problem.
+- The problem has overlapping subproblems: The subsequence of the longest increasing subsequence must also be increasing!
 
-  $F(i)$ is longest increasing sequence ending at index $i$.
+  #### Objective function
+
+  $T(i)$ is the longest increasing sequence specifically ending at index $$i$.
 
   - This does not necessarily represent the longest subsequence that includes all elements up to the $i'th$ index.
   - Instead, it specifically looks at subsequences that have nums[i] as their last element!
 
-  #### Base Cases
+  #### Base cases
 
-  1. $F(0) = 1$. The longest increasing sequence at zeroth index is 1.
+  1. $T(0) = 1$, The longest increasing sequence at zeroth index is 1.
 
-  #### Recurrance Relation
+  #### Recurrance relation
 
-  $F(n) = 1+F(j)$ if $nums[j]<nums[n]$ otherwise 1 , for j from 0 to n.
+  $T(i) = \max (\begin{cases} 1 + T(j) & \text{if nums[j] < nums[i]}, \\ 1 & \text{otherwise}. \end{cases}) \quad{\text{for j in 0...i-1}}$
 
-  - This is a not a recursive leap of faith! We cannot take a recursive leap of faith here because there the question imposes a sense of direction from left to right. We cannot choose to stand at the rightmost value and look back.
-  - Here, we try to find all subsequences where nums[n] can be the last value and check the longest value in every case. One of the case will contain the maximum value, not necessarily the last case!
+  - This is not a recursive leap of faith!
+    - We cannot take a recursive leap of faith here because there the question imposes a sense of direction from left to right. We cannot choose to stand at the rightmost value and look back.
+  - This recurrance relation is for the logic used inside the recursive function!
+  - We iterate over all the elements until the current, We have two options for every iteration. The output of the recursive function is the maximum of all the iterations.
 
-  #### Where to find the Answer
+#### Where to find the answer
 
-  The answer is $max(F(n))$ for n from 0 to n unlike usual.
+Unlike usual, we need to iterate over all the elements and call the recursive function. The answer will the maximum of these iterations.
 
 <br>
 
-#### Recursive Solution (Top Down Approach)
+#### Complexity analysis
+
+- Time Complexity : This is a factorial, $O(n*n!)$ solution in terms of time, where $n$ is the size of the input array.
+
+  - The time complexity of the recursive function is determined by the number of recursive calls which is equal to the number of nodes in the recursive tree. The maximum number of nodes for a tree with depth $n$ and the branches for level $$j$ is $n-j$ is given by $n!$.
+
+    <!-- TODO - Add the image of the recursive tree and the proof for the above case in the relavant notes -->
+
+    - The time complexity of the overall function is therefore $O(n*n!)$.
+
+- Space Complexity : This is a linear, $O(n)$ solution in terms of space, This is the auxilary stack space.
+
+<br>
+<br>
+
+### Top down dp solution
 
 ```py
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        def lengthOfLISEndingAtIndex(endIndex):
-            if endIndex == 0:
-                return 1
-            longest = 1
-            for i in range(endIndex):
-                if nums[i] < nums[endIndex]:
-                    length = 1 + lengthOfLISEndingAtIndex(i)
-                    longest = max(longest, length)
+        mem = {}
 
+        def rec(i):
+            "longest increasing subsequence considering it includes and ends with nums[i]"
+            if(i in mem):
+                return mem[i]
+
+            if(i == 0):
+                return 1
+
+            longest = 1
+            for j in range(i):
+                if(nums[i] > nums[j]):
+                    longest = max(longest, 1 + rec(j))
+
+            mem[i] = longest
             return longest
 
-        res = 1
+        #The longest increasing subsequence might be ending with any of the index not necessarily the last one
+        res = 0
         for i in range(len(nums)):
-            curRes = lengthOfLISEndingAtIndex(i)
-            res = max(res, curRes)
+            res = max(res, rec(i))
 
         return res
 ```
 
-- If this were a classic top down appraoch we should have called the recursive function with the last index but it is not the case here. Because of the nature of the question, There is a sense of direction (from left to right). Hence we have to iterate over every case until the given index and pick the maximum one.
-- This is an exponential $O(2^n)$ solution in terms of time and linear $O(n)$ solution in terms of space complexity.
+<br>
+
+#### Explanation
+
+Memoize the recursive solution using a map.
 
 <br>
 
-#### Recursive Solution (Top Down Approach) with Memoization
+#### Complexity analysis
 
-```py
-class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        memo = {}
-        def lengthOfLISEndingAtIndex(endIndex):
-            if endIndex in memo:
-                return memo[endIndex]
-            if endIndex == 0:
-                return 1
-            longest = 1
-            for i in range(endIndex):
-                if nums[i] < nums[endIndex]:
-                    length = 1 + lengthOfLISEndingAtIndex(i)
-                    longest = max(longest, length)
-            memo[endIndex] = longest
-            return longest
+- Time Complexity : This is a quadratic, $O(n^2)$ solution in terms of time, where $n$ is size of the input array.
 
-        res = 1
-        for i in range(len(nums)):
-            curRes = lengthOfLISEndingAtIndex(i)
-            res = max(res, curRes)
+  - Memoization ensures that the actual logic in the recursive calls are executed only once for a given parameter. Hence the time complexity of the recursive function is cut down to $O(n)$.
 
-        return res
-```
+  - The time complexity of the overall algorithm is $O(n*n)$.
 
-- This is a quadratic $O(n^2)$ solution in terms of time and linear $O(n)$ solution in terms of space complexity.
-  - The time complexity of the recursive calls is cut down to $O(n)$ because of memoization. The outer loop has $O(n)$ hence overall time complexity is $O(n^2)$.
-  - The space used by the dictionary is $O(n)$ and the auxilary space is also $O(n)$. Overall, It is $O(n)$.
+- Space Complexity : This is a linear, $O(n)$ solution in terms of space, where $n$ is the size of the map.
 
 <br>
+<br>
 
-#### Dynamic Programming Solution (Bottom Up Approach)
+### Bottom up dp solution
 
 ```py
 class Solution:
@@ -138,58 +189,38 @@ class Solution:
         return max(dp)
 ```
 
-- This is a quadratic $O(n^2)$ solution in terms of time and linear $O(n)$ solution in terms of space complexity.
-  - The space complexity of this this cannot be reduced further by using variables instead of the array because the answer is not always in the previous state.
+<br>
+
+#### Explanation
+
+Use Tabulation with 1D dp array.
 
 <br>
 
-### Ideal Solution
+#### Complexity analysis
 
-```py
+- Time Complexity : This is a quadratic, $O(n^2)$ solution in terms of time, where $n$ is size of the input array.
+- Space Complexity : This is a linear, $O(n)$ solution in terms of space, where $n$ is the size of the dp array.
 
-```
+  - The space complexity of this this cannot be reduced further by using variables instead of the array because the answer is not always in the previous state.
 
-- The following has $O()$ time complexity $O()$ space complexity.
+<br>
+<br>
+<br>
 
+## Follow ups
+
+- Find the actual subsequnce as a follow up question. <!-- TODO -->
+
+<br>
 <br>
 <br>
 
 ## Notes
 
-<br>
-
-### Subsequence
-
-_A subsequence of a sequence is a new sequence derived from the original sequence by deleting some or no elements without changing the order of the remaining elements._
-
-- A subsequence need not be contigious.
-- For a sequence [3, 6, 7, 1, 5],
-  - [3,7,1] is a subsequence.
-  - [7] is a subsequence.
-  - [7,6,5] is not a subsequence because the original index of 6 is less than that of 7.
+- This is a unqiue case of the DP framework, where the answer is not in the final value!
 
 <br>
-
-### Strictly Increasing Sequence
-
-_A sequence is strictly increasing if every element is greater than the previous one._
-
-- [1, 3, 5, 7] is a strictly increasing sequence.
-- [1, 3, 5, 5] is not a strictly increasing sequence.
-
-<br>
-
-### Non decreasing Sequence
-
-_A sequence is non-decreasing if every element is greater than or equal to the previous one._
-
-- [1, 3, 5, 5] is a non decreasing sequence.
-
-<br>
-<br>
-
-## Test Cases
-
 <br>
 <br>
 
@@ -197,6 +228,4 @@ _A sequence is non-decreasing if every element is greater than or equal to the p
 
 <br>
 <br>
-
-//TODO - Find the actual subsequnce as a follow up question.
-//TODO - Try to find a solution by flipping the question, find the longest decreasing subsequence from the last value, direction backwards? Is this possible
+<br>
