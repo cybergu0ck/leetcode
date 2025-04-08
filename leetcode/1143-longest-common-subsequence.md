@@ -152,7 +152,7 @@ Memoize the recursive solution using a map.
 
   - Memoization ensures that the number of recursive calls is equal to the cells in the 2D dp grid of size $n*m$.
 
-- Space Complexity : This is a linear, $O(n)$ solution in terms of space, This is the auxilary stack space.
+- Space Complexity : This is a linear, $O(n)$ solution in terms of space, where $n$ is the size of the map.
 
 <br>
 <br>
