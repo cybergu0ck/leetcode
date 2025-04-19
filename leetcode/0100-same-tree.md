@@ -1,32 +1,39 @@
-# Same Tree
+# 100. Same Tree
 
-Easy level question on leetcode.
+Easy [level question on leetcode](https://leetcode.com/problems/same-tree/).
 
 <br>
 <br>
+<br>
 
-## Description
+## Clarifications
 
-Find it [here](https://rebrand.ly/zzen77f).
+Question is self explanatory.
 
+<br>
+<br>
+<br>
+
+## Test cases
+
+| Case                                | Input                     | Output |
+| ----------------------------------- | ------------------------- | ------ |
+| same structure and values           | p = [1,2,3], q = [1,2,3]  | True   |
+| same structure but different values | p = [1,2,1], q = [1,1,2]  | False  |
+| different structure                 | p = [1,2], q = [1,null,2] | False  |
+
+- The above test cases are complete for the given question.
+
+<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
-
-### Brute Force
-
-```py
-
-```
-
-- The following has $O()$ time complexity $O()$ space complexity.
-
 <br>
 
-### Efficient Solution
+### Efficient solution
 
 ```py
 # Definition for a binary tree node.
@@ -37,31 +44,46 @@ Find it [here](https://rebrand.ly/zzen77f).
 #         self.right = right
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        #base case
-        if (p and not q) or (q and not p):
+        if(not p and not q):
+            return True
+        elif(p and q and p.val != q.val):
             return False
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right) and p.val == q.val if (p and q) else True
+        elif((p and not q) or (q and not p)):
+            return False
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
 
-- Solving the question using classic recursion,
+```cpp
 
-  1. The base case : If one of the node exists while the other doesn't then the tree's can't be identical.
-  2. The return statement: We are handling the other cases here itself, Given both nodes exist return True if the values are identical else return False. Also calling the function on both it's children.
-
-- The following has $O(n)$ time complexity $O(log(n))$ space complexity.
-  - The time complexity of the above algorithm depends on the number of recursive calls. The worst case will be when both the trees are identical, then the number of recursive calls will be equal to the number of nodes. Hence, $O(n)$.
-  - The space complexity of the above algorithm depens on the depth of recursive which will be equal to the height of the binary tree. Hence, $O(log(n))$.
+```
 
 <br>
 
-### Ideal Solution
+#### Explanation
 
-```py
+Recursively check both nodes for existance and value for both left and right subtrees.
 
-```
+<br>
 
-- The following has $O()$ time complexity $O()$ space complexity.
+#### Complexity analysis
 
+- Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is the number of nodes in the binary tree.
+
+  - The time complexity depends on the number of recursive calls.
+  - In the worst case when both trees are identical, the number of recusrive calls will be equal to the number of nodes.
+
+- Space Complexity : This is a linear, $O(h)$ solution in terms of space, where $h$ is the depth of the binary tree.
+  - In the worst case where the binary tree is skewed, the space complexity is $O(n)$ where $n$ is the number of nodes in the binary tree.
+  - In the best case where the binary tree is balanced, the space complexity is $O(log(n))$ where $n$ is the number of nodes in the binary tree.
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+<br>
 <br>
 <br>
 
@@ -69,8 +91,10 @@ class Solution:
 
 <br>
 <br>
+<br>
 
 ## Resources
 
+<br>
 <br>
 <br>
