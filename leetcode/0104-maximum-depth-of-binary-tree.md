@@ -1,37 +1,34 @@
-# 104. Maximum Depth of Binary Tree
+# Maximum Depth of Binary Tree
 
-Easy [level question on leetcode](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/).
-
-<br>
-<br>
-<br>
-
-## Clarifications
-
-- Confirm the definition of depth of a binary tree. Is it based on number of edges or number of nodes?
-  - It is mentioned that "A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node". Hence, we number of nodes is to be considered.
+Easy level question on leetcode.
 
 <br>
 <br>
-<br>
 
-## Test cases
+## Description
 
-| Case | Input                          | Output |
-| ---- | ------------------------------ | ------ |
-|      | root = [3,9,20,null,null,15,7] | 3      |
-|      | root = [1,null,2]              | 2      |
+Find it [here](https://rebrand.ly/d4i7n5s).
 
-<br>
 <br>
 <br>
 
 ## Solution
 
 <br>
+
+### Brute Force
+
+- The following has $O()$ time complexity $O()$ space complexity.
+
+  ```py
+
+  ```
+
 <br>
 
-### Recursive solution
+### Efficient Force
+
+- The following has $O(N)$ time complexity $O(N)$ space complexity.
 
 ```py
 # Definition for a binary tree node.
@@ -73,9 +70,9 @@ Recursively exlore left and right subtrees, add one to the depth of each level a
 <br>
 <br>
 
-## Follow ups
+## Notes
 
-- If depth is defined in terms of number of edges instead of number of nodes:
+- The question mentions that "A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.", but textbook definition of depth uses the number of edges instead of the nodes (I'm guessing). To get the maximum depth of the binary tree in terms of edges,
 
   ```py
   # Definition for a binary tree node.
@@ -86,23 +83,16 @@ Recursively exlore left and right subtrees, add one to the depth of each level a
   #         self.right = right
   class Solution:
       def maxDepth(self, root: Optional[TreeNode]) -> int:
-          if(not root):
+          if not root:
               return -1
-          return max(1+self.maxDepth(root.left), 1+self.maxDepth(root.right))
+          else:
+              return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
   ```
 
-<br>
-<br>
-<br>
-
-## Notes
-
-<br>
 <br>
 <br>
 
 ## Resources
 
-<br>
 <br>
 <br>
