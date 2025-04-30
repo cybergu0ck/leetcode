@@ -71,7 +71,7 @@ Recursively check both nodes for existance and value for both left and right sub
 - Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is the number of nodes in the binary tree.
 
   - The time complexity depends on the number of recursive calls.
-  - In the worst case when both trees are identical, the number of recusrive calls will be equal to the number of nodes.
+  - In the worst case when both trees are identical, the number of recusrive calls will be equal to the number of nodes present in either of the trees. Both trees will have same number of nodes in that case.
 
 - Space Complexity : This is a linear, $O(h)$ solution in terms of space, where $h$ is the depth of the binary tree.
   - In the worst case where the binary tree is skewed, the space complexity is $O(n)$ where $n$ is the number of nodes in the binary tree.
