@@ -88,7 +88,7 @@ Loop over the bits, Determine if LSB is 1 and then keep right shifting to get th
 <br>
 <br>
 
-### Efficient solution
+### Linear dynamic programming solution
 
 ```py
 class Solution:
