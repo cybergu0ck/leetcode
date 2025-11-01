@@ -1,0 +1,94 @@
+# Template
+
+Easy [level question on leetcode](https://leetcode.com/problems/reverse-bits/description/).
+
+<br>
+<br>
+<br>
+
+## Clarifications
+
+- The description of the question is misleading, it mentions "signed integer". However the contraints given mentions that `0 <= n <= 231 - 2` and also that n is an even number. Basically n must be unsigned integer, I suppose.
+
+<br>
+<br>
+<br>
+
+## Test cases
+
+| Case            | Input | Output    |
+| --------------- | ----- | --------- |
+| Positive number | 12    | 805306368 |
+| Zero            | 0     | 0         |
+
+<br>
+<br>
+<br>
+
+## Solution
+
+<br>
+<br>
+
+### Constant time solution
+
+```py
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        res = 0
+
+        for i in range(32):
+            bit = (n >> i) & 1
+            res = (bit << (31-i)) | res
+
+        return res
+```
+
+```cpp
+
+```
+
+<br>
+
+#### Explanation
+
+Iteratively extracting each bit from right to left and placing it in reverse order from left to right in the result using bitwise operations.
+
+- In a loop that iterates 32 times,
+- Exract bits from the right side in each iteration using left shift and bitwise and operation.
+- Place bits to the left side using right shift and bitwise or operation.
+
+<br>
+
+#### Complexity analysis
+
+- Time Complexity : This is a constant, $O(1)$ solution in terms of time.
+  - The algorithm runs for 32 iterations, no matter the input.
+- Space Complexity : This is a constant, $O(1)$ solution in terms of space.
+
+<br>
+<br>
+<br>
+
+## Follow ups
+
+- If this function is called many times, how would you optimize it?
+  - The above algorithm is already optimal in terms of performance as it's constant time. However, Performance can be gained at the expense of memory. The reversed values can be precalculated and stored in a map like datastructure.
+
+<br>
+<br>
+<br>
+
+## Notes
+
+- Practice this question as it is a classic algorithm of manipulating bits.
+
+<br>
+<br>
+<br>
+
+## Resources
+
+<br>
+<br>
+<br>
