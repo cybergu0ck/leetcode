@@ -1,4 +1,4 @@
-# Template
+# 338. Counting Bits
 
 Easy [level question on leetcode](https://leetcode.com/problems/counting-bits/description/).
 

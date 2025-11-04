@@ -1,4 +1,4 @@
-# Template
+# 190. Reverse Bits
 
 Easy [level question on leetcode](https://leetcode.com/problems/reverse-bits/description/).
 

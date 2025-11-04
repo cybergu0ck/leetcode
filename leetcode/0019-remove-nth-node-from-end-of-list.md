@@ -1,4 +1,4 @@
-# Template
+# 19. Remove Nth Node From End of List
 
 Medium [level question on leetcode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/).
 

@@ -1,4 +1,4 @@
-# Template
+# 206. Reverse Linked List
 
 Easy [level question on leetcode](https://leetcode.com/problems/reverse-linked-list/description/).
 

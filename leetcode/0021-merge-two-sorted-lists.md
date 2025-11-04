@@ -1,4 +1,4 @@
-# Template
+# 21. Merge Two Sorted Lists
 
 Easy [level question on leetcode](https://leetcode.com/problems/merge-two-sorted-lists/description/).
 
