@@ -159,7 +159,8 @@ Use a map with keys as unique encoding and values as the array of anagrams.
 
 ## Notes
 
-Know that sorting is generally $n*log(n)$.
+- Know that sorting is generally $n*log(n)$.
+- ASCII standard has 128 characters and is used to represent english letters (A-Z, a-z), digits (0-9), punctuations and control characters (newline, tab etc).
 
 <br>
 
