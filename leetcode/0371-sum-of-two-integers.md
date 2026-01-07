@@ -1,4 +1,4 @@
-# Template
+# 371. Sum of Two Integers
 
 Medium [level question on leetcode](https://leetcode.com/problems/sum-of-two-integers/description/).
 
