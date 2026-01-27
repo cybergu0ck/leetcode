@@ -19,14 +19,52 @@
 
 <br>
 <br>
-
-### Clarifications
-
-Below are general questions that are good to ask nonetheless
-
 <br>
 
-#### Matrix based questions
+## Array based questions
+
+<br>
+<br>
+
+### Typical clarification questions
+
+1. Is the array sorted?
+
+1. Is the array comprised of unique elements?
+
+1. What is the type of data stored in the array?
+   - If the data type is integers, then it contains positive, negative and zeros.
+
+1. Can the array be modified?
+   - If the question demands "in-place" logic, it means array must be modified.
+
+1. Can the array be empty?
+
+<br>
+<br>
+
+### Test cases
+
+| Case                         | Array     |
+| ---------------------------- | --------- |
+| Empty Array                  | []        |
+| Array with single element    | [100]     |
+| Array with positive elements | [1,2,3]   |
+| Array with dupliates         | [1,2,2,4] |
+| Array with polarity          | [-1,0,1]  |
+
+<br>
+<br>
+<br>
+
+## Matrix based questions
+
+Matrix is typically a 2D array.
+
+<br>
+<br>
+
+### Typical clarification questions
 
 1. What is the minimum and maximum dimensions of the givem `m*n` matrix?
    - Example answer: `1 <= m, n <= 200`
@@ -39,3 +77,15 @@ Below are general questions that are good to ask nonetheless
 
 1. Can the matrix be empty?
    - Example answer: No, at the very least matrix contains only 1 cell.
+
+<br>
+<br>
+
+### Test cases
+
+| Case | Matrix |
+| ---- | ------ |
+
+<br>
+<br>
+<br>
