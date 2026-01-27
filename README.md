@@ -10,9 +10,13 @@
 
 ## Process of solving a leetcode question
 
-1. Read the question completely.
-1. Understand the question carefully and confirm if the understanding is correct.
-1. Clarrify doubts.
+1. Read the question.
+   - Read the question complemently.
+   - Understand what is needed to be done?
+   - Something to be returned or done in place?
+1. Confirm understanding.
+   - Pick a simple example case and write down the expected outcome and confirm if the understanding is correct.
+1. Ask clarification questions.
 1. Prepare test cases.
 1. Come up with brute force solution.
 1. Develop an optimised solution.
