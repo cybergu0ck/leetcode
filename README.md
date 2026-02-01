@@ -32,12 +32,12 @@
 
 ### Typical clarification questions
 
+1. What is the type of data stored in the array?
+   - If the data type is integers, then it contains positive, negative and zeros.
+
 1. Is the array sorted?
 
 1. Is the array comprised of unique elements?
-
-1. What is the type of data stored in the array?
-   - If the data type is integers, then it contains positive, negative and zeros.
 
 1. Can the array be modified?
    - If the question demands "in-place" logic, it means array must be modified.
