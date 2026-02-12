@@ -75,34 +75,26 @@ Use the framework for solving recusrive question
 - The question asks to find the number of ways the string can be decoded, a combinatorial problem. Potentially a DP problem.
 - The problem has overlapping subproblems: Given the number of ways to decode the string up to index $i-1$, the number of ways to decode up to index $i$ is either the same as at $i-1$, or the sum of ways at $i-1$ and $i-2$, depending on whether the current character alone or the last two characters together form valid codes. Note that there are many edge cases that needs to be taken care!
 
-1. Define the objective function.
+1.  Define the objective function.
 
-   $T(i)$ is the number of ways to decode the string until index $i$.
+    $T(i)$ is the number of ways to decode the string until index $i$.
 
-2. Identify the base cases.
+2.  Identify the base cases.
 
-   - $T(-1) = 1$. There is only 1 way to decode the string with no characters i.e no decoding.
-   - $T(0) = \begin{cases} 1 \quad \text{if string[0] != '0'}, \\ 0 \quad \text{if string[0] == '0'}\end{cases}$
+    ![image](./_assets/images/leetcode-91-4.png)
 
-3. Form the recurrance relation.
+3.  Form the recurrance relation.
 
-   $T(i) = \begin{cases}
-    1 & \text{if } i = -1 \\
-    0 & \text{if } i = 0 \text{ and } s[i] = \text{'0'}\\
-    1 & \text{if } i = 0 \text{ and } s[i] \neq \text{'0'} \\
-    0 & \text{if } s[i] = 0 \text{ and } (s[i-1] \neq \text{'1'} \text{ and } s[i-1] \neq \text{'2'}) \\
-    T(i-2) & \text{if } s[i] = 0 \text{ and } (s[i-1] = \text{'1'} \text{ or } s[i-1] = \text{'2'}) \\
-    T(i-1) + T(i-2) &  \text{if } s[i] \neq 0 \text{ and } \text{if } 11 \leq \text{int}(s[i-1]+s[i]) \leq 26\\
-    T(i-1) & \text{if } s[i] \neq 0 \text{ and } \text{if } 11 \nleq \text{int}(s[i-1]+s[i]) \nleq 26\\
-    \end{cases}$
+    ![image](./_assets/images/leetcode-91-3.png)
 
-   - This is a recursive leap of faith i.e. assuming the answers to the previous problems are known.
-   - Apart from the base cases,
+     <br>
+     
+    - This is a recursive leap of faith i.e. assuming the answers to the previous problems are known.
+    - Apart from the base cases,
+      - If the current character is zero, consider the previous character only '10' and '20' are valid.
+      - If the current character is non-zero, if last two digits are valid, it means the current character can be added to the decodings obtained for `string[:i-1]` and the two digit can be added to the decodings obtained for `string[:i-2]`. See the illustration below :
 
-     - If the current character is zero, consider the previous character only '10' and '20' are valid.
-     - If the current character is non-zero, if last two digits are valid, it means the current character can be added to the decodings obtained for `string[:i-1]` and the two digit can be added to the decodings obtained for `string[:i-2]`. See the illustration below :
-
-       ![leetcode-91-1](./_assets/images/leetcode-91-1.jpg)
+        ![leetcode-91-1](./_assets/images/leetcode-91-1.jpg)
 
 <br>
 
@@ -115,7 +107,6 @@ Use the framework for solving recusrive question
 #### Complexity analysis
 
 - Time Complexity : This is exponential, $O(2^n)$ solution in terms of time, where $n$ is number of characters in the input string.
-
   - An illustration of the recursive tree,
 
     ![leetcode-91-2](./_assets/images/leetcode-91-2.jpg)
@@ -297,6 +288,20 @@ Tabulation using variables.
 ## Resources
 
 - [Knapsack](https://www.youtube.com/watch?v=W4rYz-kd-cY)'s video is pretty much the only video which explains the above algorithm!
+
+- Replaced the following latex with images, storing the latex here just in case.
+  - $T(-1) = 1$. There is only 1 way to decode the string with no characters i.e no decoding.
+  - $T(0) = \begin{cases} 1 \quad \text{if string[0] != '0'}, \\ 0 \quad \text{if string[0] == '0'}\end{cases}$
+
+  $T(i) = \begin{cases}
+    1 & \text{if } i = -1 \\
+    0 & \text{if } i = 0 \text{ and } s[i] = \text{'0'}\\
+    1 & \text{if } i = 0 \text{ and } s[i] \neq \text{'0'} \\
+    0 & \text{if } s[i] = 0 \text{ and } (s[i-1] \neq \text{'1'} \text{ and } s[i-1] \neq \text{'2'}) \\
+    T(i-2) & \text{if } s[i] = 0 \text{ and } (s[i-1] = \text{'1'} \text{ or } s[i-1] = \text{'2'}) \\
+    T(i-1) + T(i-2) &  \text{if } s[i] \neq 0 \text{ and } \text{if } 11 \leq \text{int}(s[i-1]+s[i]) \leq 26\\
+    T(i-1) & \text{if } s[i] \neq 0 \text{ and } \text{if } 11 \nleq \text{int}(s[i-1]+s[i]) \nleq 26\\
+    \end{cases}$
 
 <br>
 <br>
