@@ -152,7 +152,7 @@ Memoize the [above](#top-down-recursive-solution) solution using a map.
   - By cacheing the calculated values, we avoid repeated calculations.
   - The recursive function runs once for each value until the target, $n$.
   - The recursive function itself is a $O(k)$, where $k$ is the length of the `nums` array. This is the looping.
-
+  - Hence overall it is $O(n*k)$.
 - Space Complexity : This is a linear, $O(n)$ solution in terms of space, where $n$ is target value.
   - Space used by the map.
   - Space is used by the recursive stack as well.
