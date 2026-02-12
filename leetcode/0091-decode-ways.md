@@ -80,29 +80,29 @@ Use the framework for solving recusrive question
    $T(i)$ is the number of ways to decode the string until index $i$.
 
 2. Identify the base cases.
-
    - $T(-1) = 1$. There is only 1 way to decode the string with no characters i.e no decoding.
-   - $T(0) = \begin{cases} 1 \quad \text{if string[0] != '0'}, \\ 0 \quad \text{if string[0] == '0'}\end{cases}$
+   - $T(0) = \begin{cases} 1 & \text{if } \text{string}[0] \neq \text{'0'} \\ 0 & \text{if } \text{string}[0] = \text{'0'} \end{cases}$
 
 3. Form the recurrance relation.
 
-   $T(i) = \begin{cases}
-    1 & \text{if } i = -1 \\
-    0 & \text{if } i = 0 \text{ and } s[i] = \text{'0'}\\
-    1 & \text{if } i = 0 \text{ and } s[i] \neq \text{'0'} \\
-    0 & \text{if } s[i] = 0 \text{ and } (s[i-1] \neq \text{'1'} \text{ and } s[i-1] \neq \text{'2'}) \\
-    T(i-2) & \text{if } s[i] = 0 \text{ and } (s[i-1] = \text{'1'} \text{ or } s[i-1] = \text{'2'}) \\
-    T(i-1) + T(i-2) &  \text{if } s[i] \neq 0 \text{ and } \text{if } 11 \leq \text{int}(s[i-1]+s[i]) \leq 26\\
-    T(i-1) & \text{if } s[i] \neq 0 \text{ and } \text{if } 11 \nleq \text{int}(s[i-1]+s[i]) \nleq 26\\
-    \end{cases}$
+   $
+   T(i) = \begin{cases}
+   1 & \text{if } i = -1 \\
+   0 & \text{if } i = 0 \text{ and } s[i] = \text{'0'} \\
+   1 & \text{if } i = 0 \text{ and } s[i] \neq \text{'0'} \\
+   0 & \text{if } s[i] = 0 \text{ and } (s[i-1] \neq \text{'1'} \text{ and } s[i-1] \neq \text{'2'}) \\
+   T(i-2) & \text{if } s[i] = 0 \text{ and } (s[i-1] = \text{'1'} \text{ or } s[i-1] = \text{'2'}) \\
+   T(i-1) + T(i-2) & \text{if } s[i] \neq 0 \text{ and } 11 \leq \text{int}(s[i-1]+s[i]) \leq 26 \\
+   T(i-1) & \text{if } s[i] \neq 0 \text{ and } 11 \not\leq \text{int}(s[i-1]+s[i]) \not\leq 26
+   \end{cases}
+   $
 
-   - This is a recursive leap of faith i.e. assuming the answers to the previous problems are known.
-   - Apart from the base cases,
+- This is a recursive leap of faith i.e. assuming the answers to the previous problems are known.
+- Apart from the base cases,
+  - If the current character is zero, consider the previous character only '10' and '20' are valid.
+  - If the current character is non-zero, if last two digits are valid, it means the current character can be added to the decodings obtained for `string[:i-1]` and the two digit can be added to the decodings obtained for `string[:i-2]`. See the illustration below :
 
-     - If the current character is zero, consider the previous character only '10' and '20' are valid.
-     - If the current character is non-zero, if last two digits are valid, it means the current character can be added to the decodings obtained for `string[:i-1]` and the two digit can be added to the decodings obtained for `string[:i-2]`. See the illustration below :
-
-       ![leetcode-91-1](./_assets/images/leetcode-91-1.jpg)
+    ![leetcode-91-1](./_assets/images/leetcode-91-1.jpg)
 
 <br>
 
@@ -115,7 +115,6 @@ Use the framework for solving recusrive question
 #### Complexity analysis
 
 - Time Complexity : This is exponential, $O(2^n)$ solution in terms of time, where $n$ is number of characters in the input string.
-
   - An illustration of the recursive tree,
 
     ![leetcode-91-2](./_assets/images/leetcode-91-2.jpg)
