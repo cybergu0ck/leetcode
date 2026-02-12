@@ -9,11 +9,9 @@ Medium [level question on leetcode](https://leetcode.com/problems/longest-increa
 ## Clarifications
 
 - Confirm the definition of subsequence.
-
   - A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
 
 * Can the input array be empty?
-
   - `1 <= nums.length <= 2500`
 
 * The question seeks the longest strictly increasing subsequence.
@@ -82,25 +80,35 @@ Use the dp framework as the question can be solved using dynamic programming:
 - The problem is about finding longest increasing subsequence, an optimisation problem. Potentially a DP problem.
 - The problem has overlapping subproblems: The subsequence of the longest increasing subsequence must also be increasing!
 
-  #### Objective function
+<br>
 
-  $T(i)$ is the longest increasing sequence specifically ending at index $$i$.
+#### Objective function
 
-  - This does not necessarily represent the longest subsequence that includes all elements up to the $i'th$ index.
-  - Instead, it specifically looks at subsequences that have nums[i] as their last element!
+$T(i)$ is the longest increasing sequence specifically ending at index $$i$.
 
-  #### Base cases
+- This does not necessarily represent the longest subsequence that includes all elements up to the $i'th$ index.
+- Instead, it specifically looks at subsequences that have nums[i] as their last element!
 
-  1. $T(0) = 1$, The longest increasing sequence at zeroth index is 1.
+<br>
 
-  #### Recurrance relation
+#### Base cases
 
-  $T(i) = \max (\begin{cases} 1 + T(j) & \text{if nums[j] < nums[i]}, \\ 1 & \text{otherwise}. \end{cases}) \quad{\text{for j in 0...i-1}}$
+1. $T(0) = 1$, The longest increasing sequence at zeroth index is 1.
 
-  - This is not a recursive leap of faith!
-    - We cannot take a recursive leap of faith here because there the question imposes a sense of direction from left to right. We cannot choose to stand at the rightmost value and look back.
-  - This recurrance relation is for the logic used inside the recursive function!
-  - We iterate over all the elements until the current, We have two options for every iteration. The output of the recursive function is the maximum of all the iterations.
+<br>
+
+#### Recurrance relation
+
+![image](./_assets/images/leetcode-300.png)
+
+<br>
+
+- This is not a recursive leap of faith!
+  - We cannot take a recursive leap of faith here because there the question imposes a sense of direction from left to right. We cannot choose to stand at the rightmost value and look back.
+- This recurrance relation is for the logic used inside the recursive function!
+- We iterate over all the elements until the current, We have two options for every iteration. The output of the recursive function is the maximum of all the iterations.
+
+<br>
 
 #### Where to find the answer
 
@@ -111,11 +119,9 @@ Unlike usual, we need to iterate over all the elements and call the recursive fu
 #### Complexity analysis
 
 - Time Complexity : This is a factorial, $O(n*n!)$ solution in terms of time, where $n$ is the size of the input array.
-
   - The time complexity of the recursive function is determined by the number of recursive calls which is equal to the number of nodes in the recursive tree. The maximum number of nodes for a tree with depth $n$ and the branches for level $$j$ is $n-j$ is given by $n!$.
 
     <!-- TODO - Add the image of the recursive tree and the proof for the above case in the relavant notes -->
-
     - The time complexity of the overall function is therefore $O(n*n!)$.
 
 - Space Complexity : This is a linear, $O(n)$ solution in terms of space, This is the auxilary stack space.
@@ -165,7 +171,6 @@ Memoize the recursive solution using a map.
 #### Complexity analysis
 
 - Time Complexity : This is a quadratic, $O(n^2)$ solution in terms of time, where $n$ is size of the input array.
-
   - Memoization ensures that the actual logic in the recursive calls are executed only once for a given parameter. Hence the time complexity of the recursive function is cut down to $O(n)$.
 
   - The time complexity of the overall algorithm is $O(n*n)$.
@@ -201,7 +206,6 @@ Use Tabulation with 1D dp array.
 
 - Time Complexity : This is a quadratic, $O(n^2)$ solution in terms of time, where $n$ is size of the input array.
 - Space Complexity : This is a linear, $O(n)$ solution in terms of space, where $n$ is the size of the dp array.
-
   - The space complexity of this this cannot be reduced further by using variables instead of the array because the answer is not always in the previous state.
 
 <br>
@@ -225,6 +229,10 @@ Use Tabulation with 1D dp array.
 <br>
 
 ## Resources
+
+- Replaced the following latex with image. Keeping the latex here, just in case.
+
+  $T(i) = \max (\begin{cases} 1 + T(j) & \text{if nums[j] < nums[i]}, \\ 1 & \text{otherwise}. \end{cases}) \quad{\text{for j in 0...i-1}}$
 
 <br>
 <br>
