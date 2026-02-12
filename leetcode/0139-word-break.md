@@ -189,7 +189,7 @@ class Solution:
 
 #### Explanation
 
-Use 1D array and recurrance relation to code the bottom up dp approach.
+Use 1D array and recurrance relation to code the bottom up dp approach. The iteration would be in reverse direction from end to the string to start.
 
 - Note that the direction is in reverse from right to left because the recurrance relation is setup in such a way that we know the solutions to future subproblems.
 
