@@ -86,16 +86,16 @@ Use the framework for solving recusrive question
 3. Form the recurrance relation.
 
    $
-    T(i) = \begin{cases} 
-    1 & \text{if } i = -1 \\
-    0 & \text{if } i = 0 \text{ and } s[i] = \text{'0'} \\
-    1 & \text{if } i = 0 \text{ and } s[i] \neq \text{'0'} \\
-    0 & \text{if } s[i] = \text{'0'} \text{ and } (s[i-1] \neq \text{'1'} \text{ and } s[i-1] \neq \text{'2'}) \\
-    T(i-2) & \text{if } s[i] = \text{'0'} \text{ and } (s[i-1] = \text{'1'} \text{ or } s[i-1] = \text{'2'}) \\
-    T(i-1) + T(i-2) & \text{if } s[i] \neq \text{'0'} \text{ and } 11 \leq \text{int}(s[i-1]+s[i]) \leq 26 \\
-    T(i-1) & \text{if } s[i] \neq \text{'0'} \text{ and } 11 > \text{int}(s[i-1]+s[i]) \text{ or } \text{int}(s[i-1]+s[i]) > 26
-    \end{cases}
-    $
+   T(i) = \begin{cases}
+   1 & \text{if } i = -1 \\
+   0 & \text{if } i = 0 \text{ and } s[i] = \text{'0'} \\
+   1 & \text{if } i = 0 \text{ and } s[i] \neq \text{'0'} \\
+   0 & \text{if } s[i] = 0 \text{ and } (s[i-1] \neq \text{'1'} \text{ and } s[i-1] \neq \text{'2'}) \\
+   T(i-2) & \text{if } s[i] = 0 \text{ and } (s[i-1] = \text{'1'} \text{ or } s[i-1] = \text{'2'}) \\
+   T(i-1) + T(i-2) & \text{if } s[i] \neq 0 \text{ and } 11 \leq \text{int}(s[i-1]+s[i]) \leq 26 \\
+   T(i-1) & \text{if } s[i] \neq 0 \text{ and } 11 \not\leq \text{int}(s[i-1]+s[i]) \not\leq 26
+   \end{cases}
+   $
 
 - This is a recursive leap of faith i.e. assuming the answers to the previous problems are known.
 - Apart from the base cases,
