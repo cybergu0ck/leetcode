@@ -149,6 +149,8 @@ Classic trie implementation using defaultdict.
 
 ## Follow ups
 
+- Implement autocomplete feature.
+
 <br>
 <br>
 <br>
