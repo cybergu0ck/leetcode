@@ -9,15 +9,12 @@ Medium [level question on leetcode](https://leetcode.com/problems/longest-common
 ## Clarifications
 
 - Confirm definition of subsequence.
-
   - A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
 
 - Can any of the two input strings be empty?
-
   - `1 <= text1.length, text2.length <= 1000`
 
 - What kind of characters are we dealing with?
-
   - text1 and text2 consist of only lowercase English characters.
 
 <br>
@@ -83,15 +80,12 @@ Use the dp framework as the question can be solved using dynamic programming:
   $T(i,j)$ is the longest common subsequence between two strings having length i+1 and j+1 respectively (Zero based indexing is used).
 
   #### Base cases
-
   1. $T(i,j) = 0$, If either of i or j is negative. There must be atleast one character in both strings to compare.
-
   - Although the question specifies that either of the strings will not be empty, we still consider this base case. More obvious when we use the 2D DP grid to come up with these.
 
   #### Recurrance relation
 
-  $T(i,j) = \begin{cases} 1 + T(i-1,j-1) & \text{if } \text{text1}[i] == \text{text2}[j], \\ \max(T(i-1,j), T(i,j-1)) & \text{otherwise}. \end{cases}$
-
+  ![image](./_assets/images/leetcode-1143.png)
   - This is a recursive leap of faith, meaning we are assuming we know the answers to the previous problems.
   - If the $i^{th}$ and $j^{th}$ characters of text1 and text2 are same then we add 1 to the previously obtained answer i.e. $T(i-1,j-1)$.
   - Otherwise we need to check two cases and pick the maximum among them:
@@ -149,7 +143,6 @@ Memoize the recursive solution using a map.
 #### Complexity analysis
 
 - Time Complexity : This is a bilinear or polynomial, $O(n*m)$ solution in terms of time, where $n$ and $m$ are the sizes of the two input strings.
-
   - Memoization ensures that the number of recursive calls is equal to the cells in the 2D dp grid of size $n*m$.
 
 - Space Complexity : This is a linear, $O(n)$ solution in terms of space, where $n$ is the size of the map.
@@ -219,6 +212,10 @@ Tabulation using 2D DP array.
 
 - Watch [Back to Back SWE's video](https://www.youtube.com/watch?v=ASoaQq66foQ)
 - Watch [Abdul Bari's video](https://www.youtube.com/watch?v=sSno9rV8Rhg)
+
+- Replaced the latex with image, storing the latex here, just in case.
+
+  $T(i,j) = \begin{cases} 1 + T(i-1,j-1) & \text{if } \text{text1}[i] == \text{text2}[j], \\ \max(T(i-1,j), T(i,j-1)) & \text{otherwise}. \end{cases}$
 
 <br>
 <br>
