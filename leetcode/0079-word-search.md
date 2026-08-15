@@ -49,7 +49,7 @@ class Solution:
         rows = len(board)
         cols = len(board[0])
 
-        def dfs(r,c, index):
+        def DFS(r,c, index):
             if index == len(word):
                 return True
 
@@ -60,10 +60,10 @@ class Solution:
             temp = board[r][c]
             board[r][c] = '#'
 
-            #dfs
+            #DFS
             dirs = [[1,0],[-1,0],[0,1],[0,-1]]
             for dr, dc in dirs:
-                if dfs(r+dr, c+dc, index + 1):
+                if DFS(r+dr, c+dc, index + 1):
                     return True
 
             #assign the original character back
@@ -74,7 +74,7 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 if board[r][c] == word[0]:
-                    if dfs(r,c, 0):
+                    if DFS(r,c, 0):
                         return True
 
         return False
@@ -108,7 +108,8 @@ Initiate a DFS from every cell matching the word's first character, recursively 
   - The outer nested loop is of $O(m*n)$.
   - The time complexity is determined by the number of recursive calls which is equal to the number of nodes in the recursive tree. The maximum number of nodes in a tree with depth of $n$ and each node having $k$ branches is
     $$\frac{k^{(n+1)} - 1}{k - 1}$$
-  - The dfs function is $O(4^k)$. We can see that the number of branches is 4 (The four directions) and the depth is the length of the input word.
+  - The DFS function is $O(4^k)$. We can see that the number of branches is 4 (The four directions) and the depth is the length of the input word.
+  - Technically, it could be stated taht DFS funciton is $O(3^k)$, as the algorithm never runs for all 4 directions but only 3 directions (Constrain that a character should not be used again)
 
 - Space Complexity : This is a linear, $O(k)$ solution in terms of space, where $k$ is the length of the input word.
   - This is the space of the recursion stack.
