@@ -60,17 +60,11 @@ class Solution:
 
         if(len(nums) == 1):
             return 1
-        #create a map of value and index
-        ValueToIndex = {}
-        for i,v in enumerate(nums):
-            ValueToIndex[v] = i
 
         startIndex = 0
         endIndex = len(nums)-1
-        minValue = min(nums)
-        maxValue = max(nums)
-        minValueIndex = ValueToIndex[minValue]
-        maxValueIndex = ValueToIndex[maxValue]
+        minValueIndex = nums.index(min(nums))
+        maxValueIndex = nums.index(max(nums))
 
         #pick the one that is closer to an end
         leftOfMinValue = abs(minValueIndex - 0)
@@ -128,8 +122,7 @@ Greedy solution, remove the targest closest to an end and then remove the other.
   - min(nums) and max(nums) each take $\mathcal{O}(N)$ time.
   - All remaining conditional checks and arithmetic operations are $\mathcal{O}(1)$.
   - Total time is $N + N + N = 3N \Rightarrow \mathcal{O}(N)$.
-- Space Complexity : This is a lienar, $O(n)$ solution in terms of space, where $n$ is number of elements in the input array.
-  - The ValueToIndex hash map stores $N$ key-value pairs, requiring $\mathcal{O}(N)$ auxiliary space.
+- Space Complexity : This is a constant, $O(1)$ solution in terms of space.
 
 <br>
 <br>
@@ -191,6 +184,25 @@ The optimal strategy is always the minimum of three static options: delete both 
 <br>
 
 ## Notes
+
+- Finding the index of max or min element in a Python list.
+  - One way would be to store the information in a map and then use it.
+
+    ```py
+    nums = [1,2,3,10,4]
+    value_to_index = {}
+
+    for i,v in enumerate(nums):
+        value_to_index[v] = 1
+
+    min_value_index = value_to_index[min(nums)]
+    ```
+
+  - Better way is to use list's `index()` method.
+
+    ```py
+    min_value_index = nums.index(min(nums))
+    ```
 
 <br>
 <br>
