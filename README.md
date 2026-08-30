@@ -14,10 +14,10 @@
    - Read the question complemently.
    - Understand what is needed to be done?
    - Something to be returned or done in place?
-1. Confirm understanding.
+1. Confirm understanding by preparing test cases and asking clarifications.
    - Pick a simple example case and write down the expected outcome and confirm if the understanding is correct.
-1. Ask clarification questions.
-1. Prepare test cases.
+   - Ask clarification questions.
+   - Prepare test cases.
 1. Come up with brute force solution.
 1. Develop an optimised solution.
 
