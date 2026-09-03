@@ -99,9 +99,6 @@ Matrix is typically a 2D array.
 1. Do we have the liberty to modify the type and value of the elements?
    - Example answer: Matrix must contain integer types, values can be modified.
 
-1. Can the matrix be empty?
-   - Example answer: No, at the very least matrix contains only 1 cell.
-
 <br/>
 <br/>
 
