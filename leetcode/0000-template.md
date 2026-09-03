@@ -6,6 +6,12 @@ template [level question on leetcode](url).
 <br>
 <br>
 
+## Objective
+
+<br>
+<br>
+<br>
+
 ## Clarifications
 
 <!-- - Question
@@ -17,9 +23,9 @@ template [level question on leetcode](url).
 
 ## Test cases
 
-| Case | Input | Output |
-| ---- | ----- | ------ |
-|      |       |        |
+| Case | Type | Input | Output |
+| ---- | ---- | ----- | ------ |
+|      |      |       |        |
 
 <br>
 <br>
