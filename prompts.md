@@ -10,4 +10,34 @@ For this specific LeetCode problem, help me design a comprehensive set of test c
 For the above solution,
 1. write a one line concise yet accurate sentence which will hint for the whole solution later when I revise my notes.
 1. Follow up with bullet points explanation, also concise.
+1. Then about the time and space complexity.
+
+Write it accurately and concisely, exactly similar to the below example/
+"""
+<br>
+
+#### Explanation
+
+Perform a single pass, tracking the first and previous critical point indices to compute minimum adjacent distances on the fly and the maximum distance at the end.
+
+- Create and update variables to track the following:
+  1.  The index of the first critical point.
+  1.  The index of the previous critical point.
+  1.  The value of the previos node.
+  1.  The minimum distance between two critical points.
+
+
+<br>
+
+#### Complexity analysis
+
+- Time Complexity : This is a linear, $O(n)$ solution in terms of time, where $n$ is number of nodes in the linked list.
+  - Identifying the critical points is $O(n)$.
+
+- Space Complexity : This is a constant, $O(1)$ solution in terms of space.
+
+<br>
+<br>
+<br>
+"""
 ```
